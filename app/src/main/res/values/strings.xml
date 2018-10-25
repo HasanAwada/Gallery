@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Media_Module_Android</string>
+    <string name="media_viewer">Media Viewer</string>
+    <string name="done">done</string>
+    <string name="image">Image</string>
+    <string name="video">video</string>
+    <string name="pdf">pdf</string>
+</resources>

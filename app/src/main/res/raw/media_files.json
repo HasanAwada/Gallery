@@ -1,0 +1,95 @@
+{
+  "payload": [
+    {
+      "id": 1,
+      "name": "Image",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "IMAGE",
+      "description": "Image description bla bla bla"
+    },
+    {
+      "id": 2,
+      "name": "Video",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "VIDEO",
+      "description": "video description bla bla bla"
+    },
+    {
+      "id": 3,
+      "name": "PDF",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "PDF",
+      "description": "PDF description bla bla bla"
+    },
+    {
+      "id": 4,
+      "name": "Video",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "VIDEO",
+      "description": "video description bla bla bla"
+    },
+    {
+      "id": 5,
+      "name": "PDF",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "PDF",
+      "description": "PDF description bla bla bla"
+    },
+    {
+      "id": 2,
+      "name": "Video",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "VIDEO",
+      "description": "video description bla bla bla"
+    },
+    {
+      "id": 3,
+      "name": "PDF",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "PDF",
+      "description": "PDF description bla bla bla"
+    },
+    {
+      "id": 4,
+      "name": "Video",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "VIDEO",
+      "description": "video description bla bla bla"
+    },
+    {
+      "id": 5,
+      "name": "PDF",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "PDF",
+      "description": "PDF description bla bla bla"
+    },
+    {
+      "id": 2,
+      "name": "Video",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "VIDEO",
+      "description": "video description bla bla bla"
+    },
+    {
+      "id": 3,
+      "name": "PDF",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "PDF",
+      "description": "PDF description bla bla bla"
+    },
+    {
+      "id": 4,
+      "name": "Video",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "VIDEO",
+      "description": "video description bla bla bla"
+    },
+    {
+      "id": 5,
+      "name": "PDF",
+      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
+      "type": "PDF",
+      "description": "PDF description bla bla bla"
+    }
+  ]
+}
