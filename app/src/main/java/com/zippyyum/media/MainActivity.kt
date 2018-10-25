@@ -9,6 +9,9 @@ import com.zippyyum.media.model.MediaItem
 import com.zippyyum.media.repository.MediaRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.widget.LinearSnapHelper
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.widget.AdapterView
 
 
 class MainActivity : AppCompatActivity() {

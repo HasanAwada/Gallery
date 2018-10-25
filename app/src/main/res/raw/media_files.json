@@ -3,93 +3,37 @@
     {
       "id": 1,
       "name": "Image",
+      "url": "https://www.gettyimages.ca/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg",
+      "type": "IMAGE",
+      "description": "Image description bla bla bla"
+    },
+    {
+      "id": 1,
+      "name": "Image",
       "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
       "type": "IMAGE",
       "description": "Image description bla bla bla"
     },
     {
-      "id": 2,
-      "name": "Video",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "VIDEO",
-      "description": "video description bla bla bla"
+      "id": 1,
+      "name": "Image",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOGUhZo0Qe81U5qY_Z-seXgsD79LEEet832TVOlLMOEy10ZPsV",
+      "type": "IMAGE",
+      "description": "Image description bla bla bla"
     },
     {
-      "id": 3,
-      "name": "PDF",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "PDF",
-      "description": "PDF description bla bla bla"
+      "id": 1,
+      "name": "Image",
+      "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTscOkhZ0ZUFWjqeYiO63bTEyUkv6qWoKWWKGY8fsKd2XXEDGXW",
+      "type": "IMAGE",
+      "description": "Image description bla bla bla"
     },
     {
-      "id": 4,
-      "name": "Video",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "VIDEO",
-      "description": "video description bla bla bla"
-    },
-    {
-      "id": 5,
-      "name": "PDF",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "PDF",
-      "description": "PDF description bla bla bla"
-    },
-    {
-      "id": 2,
-      "name": "Video",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "VIDEO",
-      "description": "video description bla bla bla"
-    },
-    {
-      "id": 3,
-      "name": "PDF",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "PDF",
-      "description": "PDF description bla bla bla"
-    },
-    {
-      "id": 4,
-      "name": "Video",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "VIDEO",
-      "description": "video description bla bla bla"
-    },
-    {
-      "id": 5,
-      "name": "PDF",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "PDF",
-      "description": "PDF description bla bla bla"
-    },
-    {
-      "id": 2,
-      "name": "Video",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "VIDEO",
-      "description": "video description bla bla bla"
-    },
-    {
-      "id": 3,
-      "name": "PDF",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "PDF",
-      "description": "PDF description bla bla bla"
-    },
-    {
-      "id": 4,
-      "name": "Video",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "VIDEO",
-      "description": "video description bla bla bla"
-    },
-    {
-      "id": 5,
-      "name": "PDF",
-      "url": "https://www.sample-videos.com/img/Sample-jpg-image-500kb.jpg",
-      "type": "PDF",
-      "description": "PDF description bla bla bla"
+      "id": 1,
+      "name": "Image",
+      "url": "https://www.w3schools.com/w3images/fjords.jpg",
+      "type": "IMAGE",
+      "description": "Image description bla bla bla"
     }
   ]
 }
