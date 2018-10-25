@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.zippyyum.media.R
 import com.zippyyum.media.model.MediaItem
+import com.zippyyum.media.utilities.Helper
 import kotlinx.android.synthetic.main.image_layout.view.*
 import kotlinx.android.synthetic.main.pdf_layout.view.*
 import kotlinx.android.synthetic.main.video_layout.view.*
@@ -17,11 +18,8 @@ import kotlinx.android.synthetic.main.video_layout.view.*
  */
 class MediaViewerAdapter(context: Context, mediaItems: ArrayList<MediaItem>) : Adapter<RecyclerView.ViewHolder>() {
 
-    private var mMediaItems: ArrayList<MediaItem> = ArrayList()
-
-    init {
-        this.mMediaItems = mediaItems
-    }
+    private var mMediaItems = mediaItems
+    private val context = context
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(viewGroup.context)
@@ -51,7 +49,7 @@ class MediaViewerAdapter(context: Context, mediaItems: ArrayList<MediaItem>) : A
     override fun onBindViewHolder(view: RecyclerView.ViewHolder, index: Int) {
         val mediaItem = mMediaItems[index]
         when (mediaItem.type) {
-            MediaItem.MediaType.IMAGE -> view.itemView.imageView.text = mediaItem.name
+            MediaItem.MediaType.IMAGE -> Helper.loadImage(context, view.itemView.ivMedia, mediaItem.url)
             MediaItem.MediaType.VIDEO -> view.itemView.videoView.text = mediaItem.name
             MediaItem.MediaType.PDF -> view.itemView.pdfView.text = mediaItem.name
         }
