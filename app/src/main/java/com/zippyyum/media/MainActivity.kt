@@ -9,10 +9,9 @@ import com.zippyyum.media.model.MediaItem
 import com.zippyyum.media.repository.MediaRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.widget.LinearSnapHelper
-import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-
+import com.zippyyum.media.intefaces.ItemClickListener
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,8 +31,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun initMediaItemsNames(mediaItems: ArrayList<MediaItem>) {
         mediaItems.let {
-            rvMediaItemsNames.adapter = MediaFilesNamesAdapter(this, mediaItems)
+
+            val adapter = MediaFilesNamesAdapter(this, mediaItems)
+            adapter.setItemClickListener(object : ItemClickListener{
+                override fun onItemClick(view: View, position: Int){
+
+                }
+            })
+
+            rvMediaItemsNames.adapter = adapter
             rvMediaItemsNames.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
             initMediaItems(mediaItems)
         }
     }
