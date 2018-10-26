@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:text="@string/done"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/orange"
             android:textSize="22sp" />
 
     </android.support.v7.widget.Toolbar>

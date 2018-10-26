@@ -1,5 +1,6 @@
 package com.zippyyum.media
 
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,9 +10,10 @@ import com.zippyyum.media.model.MediaItem
 import com.zippyyum.media.repository.MediaRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.widget.LinearSnapHelper
-import android.util.Log
 import android.view.View
 import com.zippyyum.media.intefaces.ItemClickListener
+import android.support.v7.widget.RecyclerView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,16 +35,17 @@ class MainActivity : AppCompatActivity() {
         mediaItems.let {
 
             val adapter = MediaFilesNamesAdapter(this, mediaItems)
-            adapter.setItemClickListener(object : ItemClickListener{
-                override fun onItemClick(view: View, position: Int){
-
+            adapter.setItemClickListener(object : ItemClickListener {
+                override fun onItemClick(view: View, position: Int) {
+                    rvMediaItems.let {
+                        rvMediaItems?.smoothScrollToPosition(position)
+                    }
                 }
             })
-
             rvMediaItemsNames.adapter = adapter
             rvMediaItemsNames.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
             initMediaItems(mediaItems)
+
         }
     }
 
@@ -50,7 +53,24 @@ class MainActivity : AppCompatActivity() {
         rvMediaItems.adapter = MediaViewerAdapter(this, mediaItems!!)
         rvMediaItems.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        val snapHelper = LinearSnapHelper()
+        val snapHelper = object : LinearSnapHelper() {
+            override fun findSnapView(layoutManager: RecyclerView.LayoutManager): View? {
+                val view = super.findSnapView(layoutManager)
+
+                if (view != null) {
+                    val newPosition = layoutManager.getPosition(view)
+
+                    if (rvMediaItems.scrollState === RecyclerView.SCROLL_STATE_IDLE) {
+                        rvMediaItemsNames.findViewHolderForAdapterPosition(newPosition).itemView.performClick()
+                    }
+
+                }
+
+                return view
+            }
+        }
+
         snapHelper.attachToRecyclerView(rvMediaItems)
+//        rvMediaItemsNames.findViewHolderForAdapterPosition(0).itemView.performClick()
     }
 }
