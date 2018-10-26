@@ -3,19 +3,18 @@ package com.zippyyum.media
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import com.zippyyum.media.adapter.MediaFilesNamesAdapter
-import com.zippyyum.media.adapter.MediaViewerAdapter
-import com.zippyyum.media.model.MediaItem
+import android.support.design.widget.TabLayout
+import android.support.v4.view.ViewPager
 import com.zippyyum.media.repository.MediaRepository
 import kotlinx.android.synthetic.main.activity_main.*
-import android.support.v7.widget.LinearSnapHelper
-import android.view.View
-import com.zippyyum.media.intefaces.ItemClickListener
-import android.support.v7.widget.RecyclerView
+import com.zippyyum.media.adapter.PagerAdapter
+import android.widget.TextView
+import android.view.LayoutInflater
+import android.widget.RelativeLayout
 
 
 class MainActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,49 +27,71 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun readMediaItemsNames() {
-        initMediaItemsNames(MediaRepository(this).getMediaModels())
-    }
-
-    private fun initMediaItemsNames(mediaItems: ArrayList<MediaItem>) {
-        mediaItems.let {
-
-            val adapter = MediaFilesNamesAdapter(this, mediaItems)
-            adapter.setItemClickListener(object : ItemClickListener {
-                override fun onItemClick(view: View, position: Int) {
-                    rvMediaItems.let {
-                        rvMediaItems?.smoothScrollToPosition(position)
-                    }
-                }
-            })
-            rvMediaItemsNames.adapter = adapter
-            rvMediaItemsNames.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            initMediaItems(mediaItems)
-
+        val mediaItems = MediaRepository(this).getMediaModels()
+        for (mediaItem in mediaItems) {
+            tab_layout?.addTab(tab_layout?.newTab()!!.setText(mediaItem.name))
         }
-    }
+        val adapter = PagerAdapter(supportFragmentManager, mediaItems)
+        pager.adapter = adapter
 
-    private fun initMediaItems(mediaItems: ArrayList<MediaItem>) {
-        rvMediaItems.adapter = MediaViewerAdapter(this, mediaItems!!)
-        rvMediaItems.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        pager.adapter = adapter
+        pager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {}
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+            override fun onPageSelected(position: Int) {
+                pager.currentItem = position
+            }
+        })
 
-        val snapHelper = object : LinearSnapHelper() {
-            override fun findSnapView(layoutManager: RecyclerView.LayoutManager): View? {
-                val view = super.findSnapView(layoutManager)
+        pager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tab_layout))
+        tab_layout?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab) {
 
-                if (view != null) {
-                    val newPosition = layoutManager.getPosition(view)
+            }
 
-                    if (rvMediaItems.scrollState === RecyclerView.SCROLL_STATE_IDLE) {
-                        rvMediaItemsNames.findViewHolderForAdapterPosition(newPosition).itemView.performClick()
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+
+            }
+
+            override fun onTabSelected(selectedTab: TabLayout.Tab) {
+                pager?.currentItem = selectedTab.position
+                for (i in 0 until tab_layout.tabCount) {
+                    val tab = tab_layout.getTabAt(i)
+                    if (selectedTab.position == tab?.position) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            selectedTab.customView?.findViewById<TextView>(R.id.tab_title)?.setTextColor(resources.getColor(R.color.orange, null))
+                        } else {
+                            selectedTab.customView?.findViewById<TextView>(R.id.tab_title)?.setTextColor(resources.getColor(R.color.orange))
+                        }
+                    } else {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            tab?.customView?.findViewById<TextView>(R.id.tab_title)?.setTextColor(resources.getColor(R.color.colorAccent, null))
+                        } else {
+                            tab?.customView?.findViewById<TextView>(R.id.tab_title)?.setTextColor(resources.getColor(R.color.colorAccent))
+                        }
                     }
-
                 }
+            }
+        })
 
-                return view
+
+
+
+        for (i in 0 until tab_layout.tabCount) {
+            val tab = tab_layout.getTabAt(i)
+            val layout = LayoutInflater.from(this).inflate(R.layout.tab_layout, tab_layout, false) as RelativeLayout
+
+            val tabTextView = layout.findViewById(R.id.tab_title) as TextView
+            tabTextView.text = tab?.text
+            tab?.customView = layout
+        }
+
+        if (tab_layout.tabCount > 0) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                tab_layout.getTabAt(0)?.customView?.findViewById<TextView>(R.id.tab_title)?.setTextColor(resources.getColor(R.color.orange, null))
+            } else {
+                tab_layout.getTabAt(0)?.customView?.findViewById<TextView>(R.id.tab_title)?.setTextColor(resources.getColor(R.color.orange))
             }
         }
-
-        snapHelper.attachToRecyclerView(rvMediaItems)
-//        rvMediaItemsNames.findViewHolderForAdapterPosition(0).itemView.performClick()
     }
 }
