@@ -1,11 +1,16 @@
 package com.zippyyum.media.utilities
 
 
+import android.Manifest
+import android.app.Activity
 import android.app.DownloadManager
 import android.content.Context
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v4.widget.CircularProgressDrawable
 import android.util.Log
 import android.widget.ImageView
@@ -23,6 +28,7 @@ object Helper {
     fun loadImage(context: Context, imageView: ImageView, imageURL: String) {
         try {
 
+            Log.d("#####", "loadImage: ")
             val circularProgressDrawable = CircularProgressDrawable(context)
             circularProgressDrawable.strokeWidth = 5f
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -110,6 +116,18 @@ object Helper {
             //Enqueue download and save into referenceId
             (downloadManager as DownloadManager).enqueue(request)
         }
+    }
+
+    fun checkPermissions(activity: Activity): Boolean {
+        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            ActivityCompat.requestPermissions(activity,
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    1)
+            return false
+        }
+        return true
     }
 
 }

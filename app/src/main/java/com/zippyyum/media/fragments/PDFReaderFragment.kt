@@ -69,11 +69,14 @@ class PDFReaderFragment : Fragment() {
                         response.body()?.let { content -> Helper.downloadPDFToMemory(context!!, content, mediaItem!!.name) }
 
                         val file = File(activity?.getExternalFilesDir(null).toString() + File.separator + mediaItem!!.name + ".pdf")
-                        if (file.exists()) {
-                            pdfvMedia.fromFile(file).pageFitPolicy(FitPolicy.WIDTH)
-                                    .load()
+                        file?.let{
+                            if (file.exists()) {
+                                pdfvMedia?.let {
+                                    pdfvMedia.fromFile(file).pageFitPolicy(FitPolicy.WIDTH)
+                                            .load()
+                                }
+                            }
                         }
-
                     }
 
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {

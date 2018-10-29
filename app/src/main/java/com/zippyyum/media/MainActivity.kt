@@ -1,5 +1,7 @@
 package com.zippyyum.media
 
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +13,7 @@ import com.zippyyum.media.adapter.PagerAdapter
 import android.widget.TextView
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
+import com.zippyyum.media.utilities.Helper
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +26,30 @@ class MainActivity : AppCompatActivity() {
         main_toolbar.title = ""
         setSupportActionBar(main_toolbar)
 
-        readMediaItemsNames()
+        initApplication()
+
+    }
+
+    private fun initApplication() {
+        if (Helper.checkPermissions(this))
+            readMediaItemsNames()
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            1 -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    initApplication()
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (Helper.checkPermissions(this))
+            initApplication()
     }
 
     private fun readMediaItemsNames() {
